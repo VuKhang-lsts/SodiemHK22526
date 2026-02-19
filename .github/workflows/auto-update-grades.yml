@@ -1,0 +1,39 @@
+name: Auto update grades.json
+
+on:
+  push:
+    paths:
+      - "data/so-diem.xlsx"
+      - "convert_excel_to_json.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas openpyxl
+
+      - name: Convert Excel -> JSON
+        run: |
+          python convert_excel_to_json.py
+
+      - name: Commit & push grades.json (if changed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/grades.json
+          git diff --cached --quiet && echo "No changes" || git commit -m "Auto-update grades.json"
+          git push
