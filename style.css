@@ -1,0 +1,86 @@
+body {
+  font-family: system-ui, Arial;
+  background: #f6f7fb;
+  margin: 0;
+  padding: 18px;
+}
+
+.card {
+  width: min(1600px, 98vw);   /* tăng rộng tối đa 1600px */
+  margin: 0 auto;
+  background: #fff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+h1 { margin:0 0 8px; }
+.hint { margin:0 0 16px; color:#444; }
+form { display:flex; gap:10px; align-items:end; flex-wrap:wrap; margin-bottom:12px; }
+label { display:block; font-size:14px; color:#333; margin-bottom:6px; }
+input { flex:1; min-width:240px; padding:10px 12px; border:1px solid #d9dbe7; border-radius:10px; }
+button { padding:10px 14px; border:0; border-radius:10px; cursor:pointer; }
+.meta { color:#666; font-size:13px; margin:6px 0 12px; }
+.result { margin-top: 10px; }
+.table-wrap{
+  width: 100%;
+  overflow-x: visible;  /* không scroll ngang nữa */
+  margin-top: 12px;
+  border: 1px solid #e6e8f2;
+  border-radius: 12px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;   /* ép các cột chia đều */
+}
+
+.table thead th{
+  background: #1f5cff;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;       /* nhỏ hơn chút để fit */
+  padding: 10px 8px;
+  border-right: 1px solid rgba(255,255,255,.25);
+  white-space: normal;   /* cho xuống dòng */
+  word-break: break-word;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.table thead th:first-child { border-top-left-radius: 12px; }
+.table thead th:last-child  { border-top-right-radius: 12px; border-right: 0; }
+
+.table tbody td{
+  padding: 10px 8px;
+  font-size: 13px;
+  border-right: 1px solid #eef0f7;
+  border-bottom: 1px solid #eef0f7;
+  white-space: normal;   /* cho xuống dòng */
+  word-break: break-word;
+  text-align: center;
+}
+
+.table tbody tr:nth-child(even) td{
+  background: #f7f9ff;      /* zebra */
+}
+
+.table tbody td:last-child { border-right: 0; }
+
+/* hover highlight */
+.table tbody tr:hover td{
+  background: #eef4ff;
+}
+
+/* canh giữa các điểm (tùy) */
+.table tbody td{
+  text-align: center;
+}
+.table thead th{
+  text-align: center;
+}
+
+.bad { color:#b00020; }
+.ok { color:#0b6b0b; }
+.footer { margin-top:14px; color:#777; font-size:13px; }
